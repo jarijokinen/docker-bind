@@ -20,5 +20,7 @@ RUN echo 'APT::Install-Recommends "0";' > /etc/apt/apt.conf.d/01recommends \
     bind9 \
   && rm -rf /var/lib/apt/lists/*
 
+RUN chown root:bind /etc/bind/rndc.key
+
 EXPOSE 53/udp 53/tcp
 CMD ["/usr/sbin/named", "-f"]
